@@ -11,4 +11,3 @@ class Fish:
     razmer: str
     id: int | None = None
 
-

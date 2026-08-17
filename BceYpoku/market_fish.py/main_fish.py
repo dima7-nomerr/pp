@@ -50,7 +50,7 @@ while ttttt==True:
         input("нажмите enter для продолжения ")
 
     elif tsufra == 5:
-        suda=("введите способ приготовления ")
+        suda=("введите способ приготовления  ")
         nuzhnyy_prigotovlenie=proverka2(suda)
         print_po_prigotovlenie(nuzhnyy_prigotovlenie, prodykt)
         input("нажмите enter для продолжения ")
@@ -58,7 +58,7 @@ while ttttt==True:
     elif tsufra == 6:
 
         summa(prodykt)
-        input("нажмите enter для продолжения ")
+        input("нажмите enter для продолжения  ")
 
     elif tsufra == 7:
         l=pol(porol)
@@ -69,17 +69,6 @@ while ttttt==True:
         print("это всё что вы купили")
         print(kypul)
         break
-
-        
-    
-
-
-
-
-
-
-
-
 
     while l=="klys":
         polizovatel_tsufra= menu()

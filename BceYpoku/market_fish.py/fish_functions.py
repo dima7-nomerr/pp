@@ -17,7 +17,7 @@ def input_fish_market()-> Fish:
     print('пример(18.25 кг)')
     ves=input("напиши вес продукта в кг: ")
     print()
-    print('пример(18000) водить только цифры')
+    print('пример(18000) водить только цифры ')
     while True:
         try:
             tsena=int(input("напиши цену продукта: "))
@@ -29,8 +29,6 @@ def input_fish_market()-> Fish:
     print('пример(большой | средний | маленький)')
     razmer=input("напиши размер продукта:")
     return Fish(mazvanie_prodykta=mazvanie_prodykta, vid=vid, prigotovlenie=prigotovlenie, data_isgotovleni=data_isgotovleni, ves=ves, tsena=tsena, razmer=razmer)
-
-
 def menu():
     input("нажми enter ")
     print("напиши цифру 1 для добовления продукта")
