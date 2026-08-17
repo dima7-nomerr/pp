@@ -10,4 +10,5 @@ class Fish:
     tsena: int
     razmer: str
     id: int | None = None
-    
+
+

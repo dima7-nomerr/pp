@@ -1,6 +1,6 @@
 from Fishs import Fish
 global_id_fish=0
-
+kesh=0
 def input_fish_market()-> Fish:
     print("пример(рыба | икра | водоросли)")
     mazvanie_prodykta=input("напиши название продукта: ")
@@ -40,11 +40,13 @@ def menu():
     print("напиши цифру 5 чтобы вывести по названию")
     print("напиши цифру 6 чтобы вывести по приготовлению")
     print("напиши цифру 7 чтобы вывести по цене")
+    print("напиши цифру 8 чтобы изменить пороль")
+    print("напиши цифру 9 чтобы стать покупателем ")
     print("напиши цифру 0 для выхода")
     while True:
         try:
             polizovatel_tsufra=int(input("введи число: "))
-            if 0<= polizovatel_tsufra<=7:
+            if 0<= polizovatel_tsufra<=9:
                 return polizovatel_tsufra
             print("вы ввели не то чесло")
         except:
@@ -181,7 +183,69 @@ def summa(prodykt:list[Fish]):
     if rer!=1:
         print("товары были не найдены")
         
+
+
+def poroliiii():
+    porol=int(input("напиши новый пароль: "))
+    return porol
+
+
+def pol(porol):
+    print("если ты продовец введи число 1 если ты покупатель введи число 2")
+    while True:
+        try:
+            kto=int(input("введи число: "))
+            if kto==1 or kto==2:
+                break
+
+        except:
+            print("вы ввели не чесло ")
+
+    if kto == 1:
+        return "no"
+
+
+    elif kto == 2:
+        while True:
+            try:
+                pol_poroli=int(input("введи пороль: "))
+                break
+            except:
+                print("вы ввели не число")
+
+        if pol_poroli == porol:
+            print("вы вошли как продовец")
+            return "klys"
+        print("ты чё пороль не знаешь? или хочешь зайти на аккаунт продовца?")
+    pol(porol)
+                
             
-    
 
+def market():
+    input("нажми enter ")
+    print("напиши цифру 1 чтобы найти по id")
+    print("напиши цифру 2 чтобы вывести все продукты")
+    print("напиши цифру 3 чтобы вывести по размеру")
+    print("напиши цифру 4 чтобы вывести по названию")
+    print("напиши цифру 5 чтобы вывести по приготовлению")
+    print("напиши цифру 6 чтобы вывести по цене")
+    print("напиши цифру 7 чтобы стать торговцем ")
+    print("напиши цифру 0 для выхода")
+    while True:
+        try:
+            tsufra= int(input("введи число: "))
+            if 0<=tsufra<=7:
+                break
+        except:
+            print("вы ввели не число")
+    return tsufra
 
+def stoto_tam_po_id2():
+    while True:
+        try:
+            polizovate=int(input("введи число "))
+            if 0<= polizovate<=1:
+                return polizovate
+            print("вы ввели не то число")
+        except:
+            print("вы ввели не число")
