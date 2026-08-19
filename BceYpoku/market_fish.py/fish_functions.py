@@ -2,32 +2,33 @@ from Fishs import Fish
 global_id_fish=0
 kesh=0
 def input_fish_market()-> Fish:
-    print("пример(рыба | икра | водоросли)")
-    mazvanie_prodykta=input("напиши название продукта: ")
+    print(f"пример(рыба | икра | водоросль)")
+    mazvanie_prodykta=pravelnyy_vvod_clova("напиши название продукта: ", "рыба | икра | водоросль", 4, 9)
     print()
     print('пример( белая акулы | икра лосося | ламинария)')
-    vid=input("напиши вид продукта: ")
+    vid=pravelnyy_vvod('напиши вид продукта: ', 3, 43)
     print()
     print('пример(парной | свежий | замороженый)')
-    prigotovlenie=input("напиши приготовления продукта: ")
+    prigotovlenie=pravelnyy_vvod_clova("напиши приготовления продукта: ","парной | свежий | замороженый",6,11)
     print()
     print("пример(18:39 4 марта)")
-    data_isgotovleni=input("напиши время вылова или изготовления: ")
+    data_isgotovleni=pravelnyy_vvod("напиши время вылова или изготовления: ", 10 , 18)
     print()
     print('пример(18.25 кг)')
-    ves=input("напиши вес продукта в кг: ")
+    ves=pravelnyy_vvod_float("напиши вес продукта в кг: ", 2 , 10)
     print()
     print('пример(18000) водить только цифры ')
     while True:
         try:
             tsena=int(input("напиши цену продукта: "))
-            if tsena>0:
+            if tsena>0 and tsena<1000000000000:
                 break
+            print("вы ввели слишком маленькое или слишком большое число")
         except:
             print('вы ввели не число')
     print()
     print('пример(большой | средний | маленький)')
-    razmer=input("напиши размер продукта:")
+    razmer=pravelnyy_vvod_clova("напиши размер продукта:", "большой | средний | маленький",7 ,9)
     return Fish(mazvanie_prodykta=mazvanie_prodykta, vid=vid, prigotovlenie=prigotovlenie, data_isgotovleni=data_isgotovleni, ves=ves, tsena=tsena, razmer=razmer)
 def menu():
     input("нажми enter ")
@@ -40,17 +41,58 @@ def menu():
     print("напиши цифру 7 чтобы вывести по цене")
     print("напиши цифру 8 чтобы изменить пороль")
     print("напиши цифру 9 чтобы стать покупателем ")
+    print("напиши цифру 10 чтобы сохранить для печати ")
+    print("напиши цифру 11 чтобы сохранить для загрузки ")
     print("напиши цифру 0 для выхода")
     while True:
         try:
             polizovatel_tsufra=int(input("введи число: "))
-            if 0<= polizovatel_tsufra<=9:
+            if 0<= polizovatel_tsufra<=11:
                 return polizovatel_tsufra
-            print("вы ввели не то чесло")
+            print("вы ввели не то число")
         except:
             print("вы ввели не число")
+
+
+def pravelnyy_vvod_clova(opisanie, clova, min_pazmer, max_razmer ):
+    while True:
+        try:
+            print(f"напиши одно из этих слов {clova}")
+            pravelinoe_clovo=input(opisanie)
+            if pravelinoe_clovo in clova:
+                if len(pravelinoe_clovo)>=min_pazmer and len(pravelinoe_clovo)<=max_razmer:
+
+                    return pravelinoe_clovo
+                print("вы ввели слишком маленькое или слишком большое число")
+            print("вы ввели не те слова ")
+        except:
+            print("вы ввели что-то не то")
+
+def pravelnyy_vvod(opisanie, min_pazmer, max_razmer):
+    while True:
+        try:
+            pravelinoe_clovo=input(opisanie)
+            if len(pravelinoe_clovo)>=min_pazmer and len(pravelinoe_clovo)<=max_razmer:
+                return pravelinoe_clovo
+            print("вы ввели слишком маленькоое или слишком большое слово ")
+        except:
+            print("вы ввели что-то не то")
+
+def pravelnyy_vvod_float(opisanie,min_pazmer, max_razmer):
+    while True:
+        try:
+            pravelinoe_float=float((input(opisanie)))  
+            if pravelinoe_float>=min_pazmer and pravelinoe_float<=max_razmer:
+                return pravelinoe_float
+            print("слишком маленькое или слишком большое")     
+        except:
+            print("ты ввёл не число")  
+
     
-    
+
+
+
+
 
 def input_prodykt_B_list(prodykt:list[Fish], new_fish:Fish):
     prodykt.append(new_fish)
@@ -96,20 +138,20 @@ def print_id_fish(fisshi):
     print_one_fish(fisshi)
 
 def updeit_po_id(fisshi):
-    fisshi.mazvanie_prodykta = input("Новое название: ")
-    fisshi.vid = input("Новый вид: ")
-    fisshi.prigotovlenie = input("Новое приготовление: ")
-    fisshi.data_isgotovleni = input("Новая дата изготовления: ")
-    fisshi.ves = input("Новый вес: ")
+    fisshi.mazvanie_prodykta = pravelnyy_vvod_clova("напиши название продукта: ", "рыба | икра | водоросль", 4, 9)
+    fisshi.vid = pravelnyy_vvod('напиши вид продукта: ', 3, 43)
+    fisshi.prigotovlenie = pravelnyy_vvod_clova("напиши приготовления продукта: ","парной | свежий | замороженый",6,11)
+    fisshi.data_isgotovleni = pravelnyy_vvod("напиши время вылова или изготовления: ", 10 , 18)
+    fisshi.ves = pravelnyy_vvod("напиши вес продукта в кг: ", 2 , 10)
     while True:
         try:
 
             fisshi.tsena = int(input("Новая цена: "))
-            if fisshi.tsena>0:
+            if fisshi.tsena>0 and fisshi.tsena<100000000000000000:
                 break
         except:
-            print("вы ввули не число")
-    fisshi.razmer = input("Новый размер: ")
+            print("вы ввели не число")
+    fisshi.razmer = pravelnyy_vvod_clova("напиши размер продукта:", "большой | средний | маленький",7 ,9)
 
 def print_po_razmery(nuzhnyy_razmer, prodykt:list[Fish]):
     for rezmer in prodykt:
@@ -136,7 +178,7 @@ def print_po_prigotovlenie(nuzhnyy_prigotovlenie, prodykt:list[Fish]):
 
     print("продукты кончились или их нету")
 
-def proverka(suda):
+def proverka_na_int(suda):
     while True:
 
         try:
@@ -147,11 +189,15 @@ def proverka(suda):
     
         
 
-def proverka2(suda):
+def proverka_na_str(suda, pravelinye_slova):
     while True:
         try:
+            print(f"напиши только одно из этих слов - {pravelinye_slova}")
             nuzhnyy=input(suda)
-            return nuzhnyy
+            if nuzhnyy in pravelinye_slova:
+
+                return nuzhnyy
+            print("вы ввели не те слова")
         except:
             print("ты ввёл чтото не то")
 
@@ -159,13 +205,15 @@ def proverka2(suda):
 def stoto_tam_po_id():
     while True:
         try:
-            polizovateli=int(input("введи число "))
-            if 0<= polizovateli<=3:
-                return polizovateli
+            state=int(input("введи число "))
+            if 0<= state<=3:
+                return state
             print("вы ввели не то число")
         except:
             print("вы ввели не число")
-rre=0
+
+correct_sumvol=0
+
 def summa(prodykt:list[Fish]):
     while True:
         try:
@@ -177,18 +225,18 @@ def summa(prodykt:list[Fish]):
     for vse in prodykt:
         if vse.tsena <= summa:
             print_one_fish(vse)
-            rer=1
-    if rer!=1:
+            correct_sumvol=1
+    if correct_sumvol!=1:
         print("товары были не найдены")
         
 
 
-def poroliiii():
+def new_porol():
     porol=int(input("напиши новый пароль: "))
     return porol
 
 
-def pol(porol):
+def vvod_porol(porol):
     print("если ты продовец введи число 1 если ты покупатель введи число 2")
     while True:
         try:
@@ -215,7 +263,7 @@ def pol(porol):
             print("вы вошли как продовец")
             return "klys"
         print("ты чё пороль не знаешь? или хочешь зайти на аккаунт продовца?")
-    pol(porol)
+    vvod_porol(porol)
                 
             
 
@@ -228,11 +276,12 @@ def market():
     print("напиши цифру 5 чтобы вывести по приготовлению")
     print("напиши цифру 6 чтобы вывести по цене")
     print("напиши цифру 7 чтобы стать торговцем ")
+    print("напиши цифру 8 чтобы сохранить для печати ")
     print("напиши цифру 0 для выхода")
     while True:
         try:
             tsufra= int(input("введи число: "))
-            if 0<=tsufra<=7:
+            if 0<=tsufra<=8:
                 break
         except:
             print("вы ввели не число")
@@ -241,9 +290,76 @@ def market():
 def stoto_tam_po_id2():
     while True:
         try:
-            polizovate=int(input("введи число "))
-            if 0<= polizovate<=1:
-                return polizovate
+            state=int(input("введи число "))
+            if 0<= state<=1:
+                return state
             print("вы ввели не то число")
         except:
             print("вы ввели не число")
+
+
+
+def file_neim_vvod():
+    opisanie="напиши название файла: "
+    while True:
+        try:
+            file_neim=input(opisanie)
+            return file_neim
+        except:
+            print("вы ввели что-то не то")
+
+
+def save_to_file_for_print(file_neim, prodykt:list[Fish]):
+    with open(file_neim, "w", encoding="utf-8") as file:
+            while True:
+                try:
+                    file.write("католог рыбного магазина - 'JapaneseWormFromChina 🐛'\n\n")
+                    for fisshi in prodykt:
+
+                        file.write(f"print('=='*20\n")
+                        file.write(f"название продукта -{fisshi.mazvanie_prodykta}\n")
+                        file.write(f"вид продукта - {fisshi.vid}\n")
+                        file.write(f"приготовление - {fisshi.prigotovlenie}\n")
+                        file.write(f"дата изготовления - {fisshi.data_isgotovleni}\n")
+                        file.write(f"вес - {fisshi.ves}\n")
+                        file.write(f"цена - {fisshi.tsena} рублей\n")
+                        file.write(f"размер - {fisshi.razmer}\n")
+                        file.write(f"Ид - {fisshi.id}\n\n")
+                    break                    
+                except:
+                    print("что то сломалось")
+                
+
+def save_to_file_to_upload(prodykt:list[Fish]):
+    with open("upload.txt", "w", encoding="utf-8") as file:
+            while True:
+                try:
+                    
+                    for fisshi in prodykt:
+
+                        
+                        file.write(f"{fisshi.mazvanie_prodykta}\n")
+                        file.write(f"{fisshi.vid}\n")
+                        file.write(f"{fisshi.prigotovlenie}\n")
+                        file.write(f"{fisshi.data_isgotovleni}\n")
+                        file.write(f"{fisshi.ves}\n")
+                        file.write(f"{fisshi.tsena}\n")
+                        file.write(f"{fisshi.razmer}\n")
+                        file.write(f"{fisshi.id}\n\n")
+                    break                    
+                except:
+                    print("что то сломалось")
+
+
+
+
+
+
+
+
+
+
+
+
+
+# пороль 3455
