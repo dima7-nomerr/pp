@@ -5,9 +5,9 @@ if len(s)<0 or len(s)==0:
     exit()
 if s>="a" and s<="z" or s>="A" and s<"Z":
     if s>="a" and s<="z":
-        print("это маленькая кая англ буква")
+        print("это маленькая  англ буква")
     else:
-        print("это большаая кая англ буква")    
+        print("это большаая  англ буква")    
 elif s>="0" and s<="9":
     if int(s)%2==0:
         print("это число чётное")
