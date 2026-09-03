@@ -99,7 +99,7 @@ while is_running==True:
             new_fish=input_fish_market()
             new_fish.id=id_fish()
             input_prodykt_B_list(prodykt, new_fish)
-            input("нажмите enter для продолжения ")
+            
             
 
         elif admin_state == 2:
@@ -170,8 +170,7 @@ while is_running==True:
                     print_by_sort_vid(prodykt)
                     input("нижми enter для продолжения ")
 
-                elif state_sort == 0:
-                    running = False
+
 
                 
         elif admin_state == 5:

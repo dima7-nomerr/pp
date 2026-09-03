@@ -12,7 +12,7 @@ def input_fish_market()-> Fish:
     prigotovlenie=pravelnyy_vvod_clova("напиши приготовления продукта: ","парной | свежий | замороженый",6,11)
     print()
     print("пример(18:39 4 марта)")
-    data_isgotovleni=pravelnyy_vvod("напиши время вылова или изготовления: ", 10 , 18)
+    data_isgotovleni=pravelnyy_vvod_data_isgotovleni("напиши время вылова или изготовления: ", 10 , 18)
     print()
     print('пример(18.25 кг)')
     ves=pravelnyy_vvod_float("напиши вес продукта в кг: ", 0 , 1000000000000)
@@ -50,6 +50,23 @@ def menu():
             print("вы ввели не то число")
         except:
             print("вы ввели не число")
+
+def pravelnyy_vvod_data_isgotovleni(opisanie,  min_pazmer, max_razmer):
+    while True:
+        try:
+            pravelinoe_clovo=input(opisanie).lower().strip()
+            if len(pravelinoe_clovo)>=min_pazmer and len(pravelinoe_clovo)<=max_razmer:
+                if pravelinoe_clovo[2]==":" and pravelinoe_clovo[5]==" ":
+
+                    return pravelinoe_clovo
+                print("вы ввели дату не так")
+            print("вы ввели слишком маленькоое или слишком большое слово ")
+        except:
+            print("вы ввели что-то не то")
+
+
+
+
 
 
 def pravelnyy_vvod_clova(opisanie, clova, min_pazmer, max_razmer ):
@@ -95,12 +112,12 @@ def sort_prodykt():
     print("напиши цифру 5 чтобы отсортировать от большего к меньшему по весу ")
     print("напиши цифру 6 отсортировать от большего к меньшему по весу ")
     print("напиши цифру 7 чтобы найти по виду ")
-    print("напиши цифру 0 для выхода")
+    
     while True:
 
         try:
             admin_state_sort=int(input("напиши сюда число: "))
-            if admin_state_sort>=0 and admin_state_sort<=7:
+            if admin_state_sort>=1 and admin_state_sort<=7:
                 return admin_state_sort
             print("вы ввели слишком маленькоое или слишком большое слово ")
         except:
@@ -156,7 +173,7 @@ def updeit_po_id(fisshi):
     fisshi.mazvanie_prodykta = pravelnyy_vvod_clova("напиши название продукта: ", "рыба | икра | водоросль", 4, 9)
     fisshi.vid = pravelnyy_vvod('напиши вид продукта: ', 3, 43)
     fisshi.prigotovlenie = pravelnyy_vvod_clova("напиши приготовления продукта: ","парной | свежий | замороженый",6,11)
-    fisshi.data_isgotovleni = pravelnyy_vvod("напиши время вылова или изготовления: ", 10 , 18)
+    fisshi.data_isgotovleni = pravelnyy_vvod_data_isgotovleni("напиши время вылова или изготовления: ", 10 , 18)
     fisshi.ves = pravelnyy_vvod("напиши вес продукта в кг: ", 2 , 10)
     while True:
         try:
