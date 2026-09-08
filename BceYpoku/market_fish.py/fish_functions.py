@@ -53,7 +53,7 @@ def input_fish_dataclass()-> Fish:
     weight=correct_input_float("напиши вес продукта в кг: ", 0 , 1000000000000)
     separator()
 
-    # проверка на нужный ввод
+    
     print('пример(18000) водить только цифры ')
     price=price_input_by_int("напиши цену продукта: ", 0, 10000000000000 )
     separator()
@@ -117,6 +117,7 @@ def generation_drink(drinks:list[Drink]):
 
 def input_drink_by_dataclass_Drink():
     separator()
+    # сдесь плохо сделано
     drink_name=correct_input_word("напиши название напитка: ", "fanta | sprite | pepsi", 2, 15)
     separator()
 

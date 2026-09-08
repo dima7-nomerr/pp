@@ -11,7 +11,7 @@ user_state=-1
 is_running= True
 generation_drink(drinks)
 
-
+print_by_sort_view
 # сделать так чтобы при вводе нельзя было написать менше размер чем большой размер
 
 while is_running==True:

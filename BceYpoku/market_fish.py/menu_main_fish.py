@@ -1,10 +1,12 @@
 from fishs import *
 from fish_functions import *
 
+
 def separator():
     print()
     print("=="*20)
     print()
+
 
 
 
@@ -20,6 +22,7 @@ def separator_2():
 
 
 
+# главное меню продавца (админа)
 def menu_admin():
     input("нажми enter ")
     separator()
@@ -48,6 +51,7 @@ def menu_admin():
 
 
 
+# меню выбора сортировки товаров
 def sort_prodykt():
     separator()
     print("напиши цифру 1 чтобы вывести по размеру")
@@ -72,6 +76,7 @@ def sort_prodykt():
 
 
 
+# главное меню покупателя
 def user_menu():
     input("нажми enter ")
     separator()
